@@ -1,8 +1,14 @@
-console.log("app.js is running")
+"use strict";
+
+console.log("app.js is running");
 
 // JSX - JavaSript XML
 
-template = template = React.createElement("p", {id: "someid"}, "this is template")
-appRoot = document.getElementById('app')
+template = React.createElement(
+  "p",
+  null,
+  "sucadasdcessful!!!"
+);
+appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot)
+ReactDOM.render(template, appRoot);
