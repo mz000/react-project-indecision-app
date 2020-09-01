@@ -1,40 +1,74 @@
 "use strict";
 
-// argument objects - no longer bound with arrow functions
-
-var add = function add(a, b) {
-    // console.log(arguments)
-    return a + b;
-};
-// we will get an error here 
-
-
-// this keyword - no longer bound
-var user = {
-    name: 'andrew',
-    cities: ["new york", "philadelphia", "dublin"],
-    printPlcaeslived: function printPlcaeslived() {
-        var _this = this;
-
-        return this.cities.map(function (city) {
-            return _this.name + " has lived in " + city;
-        });
-    }
-};
-console.log(user.printPlcaeslived());
-
-// challenge area 
-
-var multiplier = {
-    numbers: [2, 4, 6, 8, 10, 12],
-    multipyBy: 4,
-    multipy: function multipy() {
-        var _this2 = this;
-
-        return this.numbers.map(function (num) {
-            return num * _this2.multipyBy;
-        });
-    }
+var app = {
+    title: "Indecision app",
+    subtitle: "Put your life in the hands of computer",
+    options: ["one", "two"]
 };
 
-console.log(multiplier.multipy());
+var formSubmit = function formSubmit(e) {
+    e.preventDefault();
+
+    console.log(e.type);
+};
+
+var template = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        "Welcome to my site!"
+    ),
+    React.createElement(
+        "p",
+        null,
+        "Home"
+    ),
+    app.subtitle && React.createElement(
+        "p",
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        "a",
+        { href: "https://www.google.com/" },
+        "Google"
+    ),
+    React.createElement("br", null),
+    React.createElement(
+        "a",
+        { href: "https://www.bing.com/" },
+        "Bing"
+    ),
+    React.createElement("br", null),
+    app.subtitle && React.createElement(
+        "p",
+        null,
+        "Title: ",
+        app.title
+    ) && React.createElement(
+        "p",
+        null,
+        "Subtitle: ",
+        app.subtitle
+    ),
+    React.createElement(
+        "p",
+        null,
+        app.options.length > 0 ? "here are your options: " + app.options : "there is no option"
+    ),
+    React.createElement(
+        "form",
+        { onSubmit: formSubmit },
+        React.createElement("input", { type: "text", name: "option" }),
+        React.createElement(
+            "button",
+            null,
+            "Add option"
+        )
+    )
+);
+
+var approot = document.getElementById('app');
+ReactDOM.render(template, approot);

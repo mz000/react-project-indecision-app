@@ -1,7 +1,7 @@
 // argument objects - no longer bound with arrow functions
 
 const add = (a, b) => {
-   // console.log(arguments)
+   // console.log(arguments)   
     return a+b
 } 
 // we will get an error here 
