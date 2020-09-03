@@ -24,6 +24,11 @@ const resetSubmit = (e) => {
     renderTemplate();
 }
 
+const onMakeDecision = () => {
+    const randomNum = Math.floor(Math.random() * app.options.length)
+    alert(app.options[randomNum])
+}
+
 const approot = document.getElementById('app');
 const renderTemplate = () => {
     let template = (
@@ -40,9 +45,15 @@ const renderTemplate = () => {
             {app.subtitle && <p>Title: {app.title}</p> && <p>Subtitle: {app.subtitle}</p>}
             <p>{app.options.length >0 ? "here are your options: " + app.options : "there is no option"}</p>
             <h3>{app.options.length}</h3>
-            {
-                [<p key="1">a</p>, <p key="2">b</p>, <p key="3">c</p>]
-            }
+            
+            <ol>
+                {
+                    app.options.map((option) => {
+                        return <li key={app.options.indexOf(option)}>{option}</li>
+                    })
+                }
+            </ol>
+
             <form onSubmit={formSubmit}>
                 <input type="text" name="option"/>
                 <button>Add option</button>  
@@ -50,6 +61,7 @@ const renderTemplate = () => {
             <br></br>
             
             <button onClick={resetSubmit}>Reset</button>
+            <button disabled={app.options.length === 0} onClick={onMakeDecision}>What should i do?</button>
     
         </div>);
     
